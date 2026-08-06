@@ -87,20 +87,31 @@ automatically from your Languages table above - don't duplicate them here. -->
 - [DEALBREAKER_1]
 - [DEALBREAKER_2]
 
+## Market (this fork)
+
+- **Primary market:** United States
+- **CV language:** English (replace `[YOUR_CV_LANGUAGE]` / Languages table during `/setup`)
+- **Primary scrape portals:** LinkedIn + FreeHire (Danish demo portals installed but disabled)
+- **Cursor entrypoint:** see `SETUP_CURSOR.md` and `.cursor/skills/`
+
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)
 - `cover_letters/` - LaTeX cover letters (custom cover.cls template)
-- `.claude/skills/` - AI skill definitions for the application workflow
+- `.claude/skills/` - AI skill definitions for the application workflow (source of truth)
 - `.agents/skills/` - Job search CLI tools
+- `.cursor/` - Thin Cursor adapters (rules + skills) pointing at `.claude/`
+- `resumes/` - Optional markdown resume library for `resume-tailoring` (gitignored when personal)
 
 ## Workflow for New Job Applications
 1. User provides a job posting (URL or text)
 2. **Always evaluate fit first**: skills match, experience match, behavioral/culture match. Present this assessment to the user before proceeding.
-3. If good fit: create targeted CV (`cv/main_<company>_<role>.tex`) and cover letter (`cover_letters/cover_<company>_<role>.tex`)
+3. If good fit:
+   - **Preferred (Cursor):** run the user `resume-tailoring` skill against the JD when a markdown resume library exists under `resumes/` (or the path the user gives). Keep factual integrity — never fabricate.
+   - **Also / LaTeX path:** create targeted CV (`cv/main_<company>_<role>.tex`) and cover letter (`cover_letters/cover_<company>_<role>.tex`) per `.claude/commands/apply.md`
 4. **Verify both documents** (see Verification Checklist below)
-5. Prepare interview talking points based on the role requirements and your strengths
+5. Prepare interview talking points: prefer the user `interview-prep` skill (JD URL + interviewer name) with Tavily research when useful; otherwise follow `.claude/commands/interview.md` and `07-interview-prep.md`
 
-**Important:** When mentioning agentic coding or AI tooling in CVs/cover letters, explicitly reference **Claude Code** by name.
+**Important:** When mentioning agentic coding or AI tooling in CVs/cover letters, explicitly reference **Claude Code** (and Cursor when accurate) by name.
 
 ## Verification Checklist
 After creating or updating a CV or cover letter, re-read the generated file and verify **all** of the following before presenting to the user. Report the results as a pass/fail checklist.
