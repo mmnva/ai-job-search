@@ -1,43 +1,59 @@
 # Separate GitHub repo: `cursor-next-offer`
 
-Target app repo: **https://github.com/mmnva/cursor-next-offer**
+Target: **https://github.com/mmnva/cursor-next-offer**
 
-The cloud agent token only sees repos the Cursor GitHub App can access. Today it can push to `mmnva/ai-job-search` but **not** `cursor-next-offer` (`Repository not found` / no listing). Until access is granted, push from a machine with your PAT, or grant the app access and re-run the agent.
+Cloud agents only see repos the **Cursor GitHub App** can access. This agent can push to `ai-job-search` but gets `Repository not found` for `cursor-next-offer`. **You do not need to fix that** — push from your laptop instead.
 
-## One-time: grant Cursor access (if private)
+## Recommended: push from your machine (no GitHub App)
 
-1. GitHub → **Settings → Applications → Installed GitHub Apps → Cursor** (or the org install under `mmnva`).
-2. Repository access → include **`cursor-next-offer`** (or “All repositories”).
-3. Confirm the repo exists at `https://github.com/mmnva/cursor-next-offer` (empty or with a README is fine).
-
-## Push the scaffold (your machine or after access)
-
-From the `ai-job-search` clone that already has `lovable-app/`:
+You already own the empty repo. On any machine where `gh auth login` / git works for your account:
 
 ```bash
+# Clone this fork (or pull latest master / PR #3)
+git clone https://github.com/mmnva/ai-job-search.git
+cd ai-job-search
+git checkout cursor/wire-next-offer-260f   # or master once PR #3 merges
+
 cd lovable-app
-git init -b main   # skip if already a git repo
+git init -b main
 git add .
 git commit -m "feat: initial Lovable SaaS scaffold (Next Offer)"
 git remote add origin https://github.com/mmnva/cursor-next-offer.git
-# or: git remote set-url origin https://github.com/mmnva/cursor-next-offer.git
 git push -u origin main
 ```
 
-Or subtree from the monorepo root:
+If `main` already has a README commit on GitHub:
 
 ```bash
-git subtree split --prefix=lovable-app -b next-offer-split
-git push https://github.com/mmnva/cursor-next-offer.git next-offer-split:main
+git push -u origin main --force
+# only OK on a brand-new empty app repo
 ```
 
-## Then in Lovable
+Confirm in the browser: https://github.com/mmnva/cursor-next-offer should show `package.json`, `src/`, `supabase/`.
 
-1. **Cursor Settings → Tools & MCP → Connect** next to Lovable (`.cursor/mcp.json` alone is not enough; OAuth must complete).
-2. Import / sync **`mmnva/cursor-next-offer`**.
-3. Connect Supabase; apply migrations under `supabase/migrations/` (or `docs/lovable/schema.sql` in this fork).
-4. Set secrets: `OPENAI_API_KEY` or `ANTHROPIC_API_KEY`, Stripe keys when billing is on.
+## Optional: Cursor GitHub App (only if you want agents to push)
 
-## Keep this fork separate
+Skip this unless you want cloud agents to write to `cursor-next-offer`.
 
-Do **not** overwrite `mmnva/ai-job-search` with the web app. Agent skills stay here; the SaaS UI lives in `cursor-next-offer`.
+1. Open https://github.com/settings/installations  
+2. Click **Cursor** (or “Configure” next to it).  
+3. Under **Repository access**, either:
+   - **All repositories**, or  
+   - **Only select repositories** → add **`cursor-next-offer`**.  
+4. Save.
+
+If Cursor is installed on an **org** (`mmnva` org): use the org’s **Settings → GitHub Apps**, not your personal settings.
+
+Personal → Installed GitHub Apps: https://github.com/settings/installations  
+Org example: `https://github.com/organizations/ORG/settings/installations`
+
+## Then in Lovable (desktop Cursor)
+
+1. Lovable MCP: Settings → Tools & MCP → confirm Lovable shows connected (cloud agents do **not** inherit that session).
+2. In Lovable UI: import / sync **`mmnva/cursor-next-offer`**.
+3. Connect Supabase; apply `supabase/migrations/`.
+4. Set LLM secrets on Edge Functions.
+
+## Keep forks separate
+
+Do **not** overwrite `mmnva/ai-job-search` with the web app. Agent skills stay there; SaaS UI lives in `cursor-next-offer`.
