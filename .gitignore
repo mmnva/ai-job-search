@@ -95,3 +95,12 @@ upskill/*.md
 
 # Brainstorm mockups (superpowers visual companion) - never ship
 .superpowers/
+
+# Bi-level loop attempt log (append-only runtime artifact)
+loops/job-search-improve/attempts.log
+
+# Lovable web app dependencies (scaffold under lovable-app/)
+lovable-app/node_modules/
+lovable-app/dist/
+lovable-app/.env
+lovable-app/.env.local

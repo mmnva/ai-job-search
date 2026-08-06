@@ -1,0 +1,46 @@
+{
+  "plugins": {
+    "tavily": {
+      "enabled": true
+    },
+    "langfuse": {
+      "enabled": true
+    },
+    "agent-compatibility": {
+      "enabled": true
+    },
+    "figma": {
+      "enabled": true
+    },
+    "apify": {
+      "enabled": true
+    },
+    "browserstack": {
+      "enabled": true
+    },
+    "bright-data": {
+      "enabled": true
+    },
+    "mongodb": {
+      "enabled": true
+    },
+    "workos": {
+      "enabled": true
+    },
+    "zapier": {
+      "enabled": true
+    },
+    "supabase": {
+      "enabled": true
+    },
+    "docs-canvas": {
+      "enabled": true
+    },
+    "superpowers": {
+      "enabled": true
+    },
+    "ctx": {
+      "enabled": true
+    }
+  }
+}
