@@ -1,7 +1,7 @@
 # Lovable product brief — AI Job Search SaaS
 
 **Source CLI:** [mmnva/ai-job-search](https://github.com/mmnva/ai-job-search)  
-**App scaffold:** [`lovable-app/`](../../lovable-app/) (push to a dedicated repo when GitHub permissions allow)  
+**App scaffold:** [`lovable-app/`](../../lovable-app/) → push to [mmnva/cursor-next-offer](https://github.com/mmnva/cursor-next-offer) (see [`NEW_REPO.md`](NEW_REPO.md))  
 **Decisions locked:** full apply loop in v1; multi-tenant SaaS end-state; markdown→PDF (no LaTeX in v1); paste/URL job intake in v1; portal search planned (Phase B).
 
 ## Product one-liner
