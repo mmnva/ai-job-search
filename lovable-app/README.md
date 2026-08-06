@@ -21,7 +21,7 @@ Web SaaS port of the agent-native [ai-job-search](https://github.com/mmnva/ai-jo
 
 ## Lovable
 
-Import this folder as its own GitHub repo (`mmnva/ai-job-search-app` — create manually if the agent cannot). Connect Lovable ↔ GitHub ↔ Supabase. Prefer prompting Lovable with `docs/` briefs rather than inventing career logic.
+Home repo: **[mmnva/cursor-next-offer](https://github.com/mmnva/cursor-next-offer)**. Connect Lovable ↔ GitHub ↔ Supabase. Prefer prompting Lovable with `docs/` briefs rather than inventing career logic.
 
 ## Feature flags
 

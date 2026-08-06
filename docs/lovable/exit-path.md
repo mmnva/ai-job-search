@@ -34,4 +34,4 @@ Full detail: local skill at `~/.claude/skills/loveable-container/` (or Cursor pl
 ## This monorepo
 
 - CLI/agent reference remains `ai-job-search`.
-- Web app lives in `lovable-app/` until split to `mmnva/ai-job-search-app` (GitHub `createRepository` was denied for the cloud agent token; create the empty repo manually, then `git subtree split` or copy `lovable-app/`).
+- Web app lives in `lovable-app/` until pushed to **`mmnva/cursor-next-offer`** (see [`NEW_REPO.md`](NEW_REPO.md)). Do not overwrite this agent fork.
