@@ -95,3 +95,6 @@ upskill/*.md
 
 # Brainstorm mockups (superpowers visual companion) - never ship
 .superpowers/
+
+# Bi-level loop attempt log (append-only runtime artifact)
+loops/job-search-improve/attempts.log

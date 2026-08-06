@@ -17,3 +17,8 @@ To prevent duplication and configuration drift across different AI agent framewo
    - Do not duplicate these rules or specifications. Treat `.claude/` files as the single source of truth.
 3. **Portal Search Skills:**
    - Job-portal search CLIs live under [.agents/skills/](.agents/skills/) in the portable Agent Skills format (with a `SKILL.md` per portal). Codex and Antigravity discover these automatically; the `/scrape` workflow in [.claude/skills/job-scraper/](.claude/skills/job-scraper/) orchestrates them.
+4. **Cursor adapters (this fork):**
+   - Thin skills and rules live under [.cursor/](.cursor/). They must point at `.claude/` specs — do not duplicate workflow prose.
+   - US defaults: LinkedIn + FreeHire enabled; Danish demo portals `enabled: false`.
+   - Non-portal / failed CLI fetches on Cursor: [.cursor/skills/scrape-router/](.cursor/skills/scrape-router/) (Bun → Firecrawl / Bright Data → Browse).
+   - Apply prefers user `resume-tailoring`; interview prefers user `interview-prep` (see `CLAUDE.md` Workflow).
